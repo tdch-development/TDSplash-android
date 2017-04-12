@@ -1,13 +1,398 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.tdchristian.tdsplash.fragments.InfoBoardFragment">
+    tools:context="ca.tdchristian.tdsplash.fragments.MainFragment"
+    android:background="@color/colorPrimaryDark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent"
+        android:id="@+id/schedule"
+        android:paddingTop="8dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:id="@+id/message1"
+            android:textAllCaps="true"
+            android:textColor="#FFF"
+            android:text="@string/blank_infoboard_message"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period1"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period1Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period1Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period2"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period2Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period2Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period3"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period3Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period3Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period4"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period4Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period4Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period5"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period5Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period5Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period6"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period6Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period6Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/period7"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="@string/blank_infoboard_period_name"
+                android:layout_width="0dp"
+                android:id="@+id/period7Name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:text="@string/blank_infoboard_time"
+                android:layout_width="0dp"
+                android:id="@+id/period7Time"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textColor="#FFF"
+                android:layout_height="30dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:id="@+id/images">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@android:drawable/stat_sys_warning"
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@android:drawable/stat_sys_warning"
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/message2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="9dp"
+            android:layout_weight="3"
+            android:background="@drawable/schedule_background"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/blank_infoboard_message"
+            android:textAllCaps="true"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
 </FrameLayout>

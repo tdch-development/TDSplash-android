@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="blank_infoboard_message">Message</string>
+    <string name="blank_infoboard_period_name">Period</string>
+    <string name="blank_infoboard_time">00:00 – 00:00</string>
 </resources>
