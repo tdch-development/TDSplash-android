@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2.5"
                 android:padding="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/happyface" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -44,23 +44,15 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="TextView" />
+                        android:text="@string/blank_infoboard_period_name" />
 
                     <TextView
-                        android:id="@+id/currentPeriodStart"
+                        android:id="@+id/currentPeriodTime"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="TextView" />
-
-                    <TextView
-                        android:id="@+id/currentPeriodEnd"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="center"
-                        android:text="TextView" />
+                        android:text="@string/blank_infoboard_time" />
                 </LinearLayout>
 
                 <TextView
@@ -69,7 +61,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:text="@string/blank_infoboard_message" />
 
                 <Button
                     android:id="@+id/button"
@@ -96,14 +88,16 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/calendar"
+                    android:scaleType="fitCenter"/>
 
                 <ImageButton
                     android:id="@+id/newsButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/news"
+                    android:scaleType="fitCenter"/>
             </LinearLayout>
 
             <LinearLayout
@@ -119,12 +113,13 @@
                     android:layout_weight="1"
                     android:text="Splash!" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/edsbyButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Edsby" />
+                    android:src="@drawable/edsby"
+                    android:scaleType="fitCenter"/>
             </LinearLayout>
 
             <LinearLayout
@@ -140,12 +135,12 @@
                     android:layout_weight="1"
                     android:text="Bus Tracker" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/parentsButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:text="For Parents" />
             </LinearLayout>
         </LinearLayout>
 

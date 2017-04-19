@@ -20,7 +20,7 @@ import ca.tdchristian.tdsplash.objects.Schedule;
  * Created by ethrv on 2017-04-12.
  */
 
-class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
+public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
 
     @Override
     protected InfoBoard doInBackground(Void... strings) {
@@ -110,6 +110,20 @@ class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Period getCurrentPeriod() {
+        Document doc;
+        Period period = null;
+        try {
+            doc = Jsoup.connect("http://splash.tdchristian.ca/apps/infoboard/blocks/block3.php").get();
+            period = new Period(doc.getElementsByClass("periodname_current").text(),
+                    doc.getElementsByClass("periodstart_current").text(),
+                    doc.getElementsByClass("periodend_current").text());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return period;
     }
 
 }

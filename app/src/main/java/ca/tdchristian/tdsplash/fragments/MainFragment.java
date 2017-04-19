@@ -10,9 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import ca.tdchristian.tdsplash.R;
 import ca.tdchristian.tdsplash.activities.MainActivity;
+import ca.tdchristian.tdsplash.objects.InfoBoard;
+import ca.tdchristian.tdsplash.objects.Period;
+import ca.tdchristian.tdsplash.tasks.RetrieveInfoBoard;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
@@ -21,6 +26,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public Button splashButton;
     public Button busButton;
     public Button infoboardButton;
+    public TextView currentPeriodName;
+    public TextView currentPeriodTime;
+    public TextView infoboardMessage;
+    public ImageView infoboardMainImage;
 
 
     // Required empty public constructor
@@ -41,17 +50,32 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
-        // Button Initialization
+        // View Initialization
         edsbyButton = (ImageButton)v.findViewById(R.id.edsbyButton);
         splashButton = (Button)v.findViewById(R.id.splashButton);
         busButton = (Button)v.findViewById(R.id.busButton);
         infoboardButton = (Button)v.findViewById(R.id.infoboardButton);
+        currentPeriodName = (TextView)v.findViewById(R.id.currentPeriodName);
+        currentPeriodTime = (TextView)v.findViewById(R.id.currentPeriodTime);
+        infoboardMessage = (TextView)v.findViewById(R.id.infoboardMessage);
+        infoboardMainImage = (ImageView)v.findViewById(R.id.infoboardMainImage);
 
         // Set onClickListeners to this class's onClick function
         infoboardButton.setOnClickListener(this);
         edsbyButton.setOnClickListener(this);
         splashButton.setOnClickListener(this);
         busButton.setOnClickListener(this);
+
+        Period currentPeriod = new RetrieveInfoBoard().getCurrentPeriod();
+
+        MainActivity mainActivity = (MainActivity)getActivity();
+        InfoBoard infoBoard = mainActivity.infoboard;
+
+
+        currentPeriodName.setText(currentPeriod.getName());
+        currentPeriodTime.setText(currentPeriod.getStart() + " - " + currentPeriod.getEnd());
+        infoboardMessage.setText(infoBoard.getMessage2());
+        infoboardMainImage.setImageDrawable(infoBoard.getImage1());
 
         // Return the inflated layout
         return v;
