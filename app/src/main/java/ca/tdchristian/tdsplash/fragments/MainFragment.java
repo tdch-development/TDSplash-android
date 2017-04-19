@@ -14,11 +14,6 @@ import android.widget.ImageButton;
 import ca.tdchristian.tdsplash.R;
 import ca.tdchristian.tdsplash.activities.MainActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MainFragment extends Fragment implements View.OnClickListener {
 
     // Variable Declaration and Initialization
@@ -27,11 +22,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public Button busButton;
     public Button infoboardButton;
 
-    MainActivity mainActivity = (MainActivity)getActivity();
 
-    public MainFragment() {
-        // Required empty public constructor
-    }
+    // Required empty public constructor
+    public MainFragment(){    }
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -54,16 +47,19 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         busButton = (Button)v.findViewById(R.id.busButton);
         infoboardButton = (Button)v.findViewById(R.id.infoboardButton);
 
+        // Set onClickListeners to this class's onClick function
         infoboardButton.setOnClickListener(this);
         edsbyButton.setOnClickListener(this);
         splashButton.setOnClickListener(this);
         busButton.setOnClickListener(this);
 
+        // Return the inflated layout
         return v;
     }
 
     @Override
     public void onClick(View v) {
+
         if (v == busButton) {
             openURL("https://tdch.mybusplanner.ca/StudentLogin.aspx");
         } else if (v == splashButton) {
@@ -71,14 +67,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else if (v == edsbyButton) {
             openURL("https://tdchristian.edsby.com/");
         } else if (v == infoboardButton) {
+            MainActivity mainActivity = (MainActivity)getActivity();
             mainActivity.loadInfoBoard();
         }
     }
 
-    // Method which opens up the site in default browser
+    // Method which opens up the given URL in default browser
     public void openURL(String url){
         startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
-
     }
 
 }

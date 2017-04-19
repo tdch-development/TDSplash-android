@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 
 import ca.tdchristian.tdsplash.R;
+import ca.tdchristian.tdsplash.fragments.InfoBoardFragment;
 import ca.tdchristian.tdsplash.fragments.MainFragment;
 
 public class MainActivity extends Activity {
@@ -21,5 +22,10 @@ public class MainActivity extends Activity {
             mainFragment = MainFragment.newInstance();
             fm.beginTransaction().add(R.id.container_main, mainFragment).commit();
         }
+    }
+
+    public void loadInfoBoard() {
+
+        getFragmentManager().beginTransaction().replace(R.id.container_main, new InfoBoardFragment()).commit();
     }
 }
