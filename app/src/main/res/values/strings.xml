@@ -7,4 +7,5 @@
     <string name="blank_infoboard_message">Message</string>
     <string name="blank_infoboard_period_name">Period</string>
     <string name="blank_infoboard_time">00:00 – 00:00</string>
+    <string name="internet_connection_prompt">Please connect to the internet, then tap here to refresh</string>
 </resources>
