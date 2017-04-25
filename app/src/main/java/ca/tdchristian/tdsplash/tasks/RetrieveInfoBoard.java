@@ -17,10 +17,11 @@ import ca.tdchristian.tdsplash.objects.Period;
 import ca.tdchristian.tdsplash.objects.Schedule;
 
 /**
- * Created by ethrv on 2017-04-12.
+ * Created by ethrv on 2017-04-20.
  */
 
-public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
+public
+class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
 
     @Override
     protected InfoBoard doInBackground(Void... strings) {
@@ -30,8 +31,9 @@ public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
         String message2 = getMessage2();
         Drawable image1 = getImage1();
         Drawable image2 = getImage2();
+        Period currentPeriod = getCurrentPeriod();
 
-        return new InfoBoard(schedule, message1, message2, image1, image2);
+        return new InfoBoard(schedule, message1, message2, image1, image2, currentPeriod);
     }
 
     @Override
@@ -112,7 +114,7 @@ public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
         }
     }
 
-    public Period getCurrentPeriod() {
+    private Period getCurrentPeriod() {
         Document doc;
         Period period = null;
         try {
@@ -127,3 +129,5 @@ public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
     }
 
 }
+
+

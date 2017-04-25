@@ -3,8 +3,11 @@ package ca.tdchristian.tdsplash.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +16,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.InputStream;
+import java.net.URL;
+
 import ca.tdchristian.tdsplash.R;
 import ca.tdchristian.tdsplash.activities.MainActivity;
 import ca.tdchristian.tdsplash.objects.InfoBoard;
 import ca.tdchristian.tdsplash.objects.Period;
-import ca.tdchristian.tdsplash.tasks.RetrieveInfoBoard;
+import ca.tdchristian.tdsplash.objects.Schedule;
+
+import static ca.tdchristian.tdsplash.activities.MainActivity.FragmentType.*;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
@@ -25,11 +38,15 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public ImageButton edsbyButton;
     public Button splashButton;
     public Button busButton;
-    public Button infoboardButton;
+    public ImageButton infoboardButton;
+    public ImageButton calendarButton;
+    public ImageButton newsButton;
+    public Button parentsButton;
     public TextView currentPeriodName;
     public TextView currentPeriodTime;
     public TextView infoboardMessage;
     public ImageView infoboardMainImage;
+
 
 
     // Required empty public constructor
@@ -54,7 +71,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         edsbyButton = (ImageButton)v.findViewById(R.id.edsbyButton);
         splashButton = (Button)v.findViewById(R.id.splashButton);
         busButton = (Button)v.findViewById(R.id.busButton);
-        infoboardButton = (Button)v.findViewById(R.id.infoboardButton);
+        infoboardButton = (ImageButton)v.findViewById(R.id.infoboardButton);
+        calendarButton = (ImageButton)v.findViewById(R.id.calendarButton);
+        newsButton = (ImageButton)v.findViewById(R.id.newsButton);
         currentPeriodName = (TextView)v.findViewById(R.id.currentPeriodName);
         currentPeriodTime = (TextView)v.findViewById(R.id.currentPeriodTime);
         infoboardMessage = (TextView)v.findViewById(R.id.infoboardMessage);
@@ -65,17 +84,26 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         edsbyButton.setOnClickListener(this);
         splashButton.setOnClickListener(this);
         busButton.setOnClickListener(this);
+        calendarButton.setOnClickListener(this);
+        newsButton.setOnClickListener(this);
 
-        Period currentPeriod = new RetrieveInfoBoard().getCurrentPeriod();
+
 
         MainActivity mainActivity = (MainActivity)getActivity();
+
+
         InfoBoard infoBoard = mainActivity.infoboard;
 
+        try {
 
-        currentPeriodName.setText(currentPeriod.getName());
-        currentPeriodTime.setText(currentPeriod.getStart() + " - " + currentPeriod.getEnd());
-        infoboardMessage.setText(infoBoard.getMessage2());
-        infoboardMainImage.setImageDrawable(infoBoard.getImage1());
+            currentPeriodName.setText(infoBoard.getCurrentPeriod().getName());
+            currentPeriodTime.setText(infoBoard.getCurrentPeriod().getStart() + " - " + infoBoard.getCurrentPeriod().getEnd());
+            infoboardMessage.setText(infoBoard.getMessage2());
+            infoboardMainImage.setImageDrawable(infoBoard.getImage1());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         // Return the inflated layout
         return v;
@@ -84,6 +112,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+
+        MainActivity mainActivity = (MainActivity)getActivity();
         if (v == busButton) {
             openURL("https://tdch.mybusplanner.ca/StudentLogin.aspx");
         } else if (v == splashButton) {
@@ -91,8 +121,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else if (v == edsbyButton) {
             openURL("https://tdchristian.edsby.com/");
         } else if (v == infoboardButton) {
-            MainActivity mainActivity = (MainActivity)getActivity();
-            mainActivity.loadInfoBoard();
+            Log.d("debugging", "InfoBoardButton clicked");
+            mainActivity.loadFragment(INFOBOARD);
+        } else if (v == calendarButton) {
+            mainActivity.loadFragment(CALENDAR);
+        } else if (v == newsButton) {
+            mainActivity.loadFragment(NEWS);
         }
     }
 
