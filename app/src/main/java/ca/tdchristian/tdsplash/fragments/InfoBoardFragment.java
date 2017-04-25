@@ -75,8 +75,6 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
 
         v = inflater.inflate(R.layout.fragment_info_board, container, false);
 
-        Log.d("debugging", "Started onCreateView");
-
         period1Name = (TextView) v.findViewById(R.id.period1Name);
         period1Time = (TextView) v.findViewById(R.id.period1Time);
         period2Name = (TextView) v.findViewById(R.id.period2Name);
@@ -103,8 +101,6 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
         image1 = (ImageView) v.findViewById(R.id.imageView1);
         image2 = (ImageView) v.findViewById(R.id.imageView2);
 
-        Log.d("debugging", "Views initialized");
-
         refreshSchedule();
 
         return v;
@@ -121,7 +117,7 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
         period7.setVisibility(g);
         message1.setVisibility(g);
         image2.setVisibility(g);
-        message2.setText("Please connect to the internet, then tap here to refresh");
+        message2.setText(R.string.internet_connection_prompt);
     }
 
     public void makeAllViewsVisible() {

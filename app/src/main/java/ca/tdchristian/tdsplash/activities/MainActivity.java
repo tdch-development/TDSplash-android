@@ -56,14 +56,22 @@ public class MainActivity extends Activity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void loadFragment(FragmentType fragmentType) {
         if (fragmentType == INFOBOARD) {
-            getFragmentManager().beginTransaction().replace(R.id.container_main, new InfoBoardFragment()).commit();
-            Log.d("debugging", "Loaded infoboard");
+            getFragmentManager().beginTransaction().replace(R.id.container_main, new InfoBoardFragment()).addToBackStack(null).commit();
         } else if (fragmentType == CALENDAR) {
-            getFragmentManager().beginTransaction().replace(R.id.container_main, new CalendarFragment()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.container_main, new CalendarFragment()).addToBackStack(null).commit();
         } else if (fragmentType == NEWS) {
-            getFragmentManager().beginTransaction().replace(R.id.container_main, new NewsFragment()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.container_main, new NewsFragment()).addToBackStack(null).commit();
         }
     }
 
