@@ -4,8 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class NewsFragment extends Fragment {
             e.printStackTrace();
         }
 
-        // parses document for all titles/descriptions
+        //parses document for all titles/descriptions
         //stores them to an ArrayList of Elements, declared using JSoup built in formatting
         //contains them like <title>blah<\blah>
         Elements titlesHTML = doc.select("title");
