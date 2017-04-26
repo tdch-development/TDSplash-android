@@ -43,7 +43,7 @@ public class NewsFragment extends Fragment {
             e.printStackTrace();
         }
 
-        //parses document for all titles/descriptions
+        // parses document for all titles/descriptions
         //stores them to an ArrayList of Elements, declared using JSoup built in formatting
         //contains them like <title>blah<\blah>
         Elements titlesHTML = doc.select("title");
