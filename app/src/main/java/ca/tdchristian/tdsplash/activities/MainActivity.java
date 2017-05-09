@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
 
     public enum FragmentType {
-        INFOBOARD, CALENDAR, NEWS, PARENTS
+        INFOBOARD, CALENDAR, NEWS
     }
 
     @Override

@@ -1,8 +1,5 @@
 package ca.tdchristian.tdsplash.objects;
 
-/**
- * Created by ethrv on 2017-05-09.
- */
 
 public class NewsPost {
 
