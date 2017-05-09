@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,6 +24,8 @@ import ca.tdchristian.tdsplash.R;
 public class NewsFragment extends Fragment {
 
     Document doc;
+    TextView newsTitleTest;
+    TextView newsBodyText;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -35,6 +38,17 @@ public class NewsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_news, container, false);
+
+        newsTitleTest = (TextView)v.findViewById(R.id.newsTitleTest);
+        newsBodyText = (TextView)v.findViewById(R.id.newsBodyTest);
 
         //Attempt to get HTML document
         try {
@@ -60,13 +74,11 @@ public class NewsFragment extends Fragment {
         }
 
         //Currently have two ArrayLists (titles and descriptions) that contain all news articles on the page
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        newsTitleTest.setText(titles.get(0));
+        newsBodyText.setText(descriptions.get(0));
+
+        return v;
     }
 }
 

@@ -16,12 +16,18 @@ import ca.tdchristian.tdsplash.objects.InfoBoard;
 import ca.tdchristian.tdsplash.objects.Period;
 import ca.tdchristian.tdsplash.objects.Schedule;
 
-/**
- * Created by ethrv on 2017-04-20.
- */
+public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
 
-public
-class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
+    int progress_status;
+
+    @Override
+    protected void onPreExecute() {
+        // TODO Auto-generated method stub
+        super.onPreExecute();
+        //Toast.makeText(Main.get
+        //Main.getApp().txt_percentage.setText("downloading 0%");App(),"Invoke on PreExecute()", Toast.LENGTH_SHORT).show();
+        progress_status = 0 ;
+    }
 
     @Override
     protected InfoBoard doInBackground(Void... strings) {

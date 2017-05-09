@@ -3,9 +3,7 @@ package ca.tdchristian.tdsplash.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,21 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.InputStream;
-import java.net.URL;
 
 import ca.tdchristian.tdsplash.R;
 import ca.tdchristian.tdsplash.activities.MainActivity;
 import ca.tdchristian.tdsplash.objects.InfoBoard;
-import ca.tdchristian.tdsplash.objects.Period;
-import ca.tdchristian.tdsplash.objects.Schedule;
 
 import static ca.tdchristian.tdsplash.activities.MainActivity.FragmentType.*;
 
@@ -41,11 +30,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public ImageButton infoboardButton;
     public ImageButton calendarButton;
     public ImageButton newsButton;
-    public Button parentsButton;
     public TextView currentPeriodName;
     public TextView currentPeriodTime;
     public TextView infoboardMessage;
     public ImageView infoboardMainImage;
+    public LinearLayout currentPeriod;
 
 
 
@@ -78,6 +67,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         currentPeriodTime = (TextView)v.findViewById(R.id.currentPeriodTime);
         infoboardMessage = (TextView)v.findViewById(R.id.infoboardMessage);
         infoboardMainImage = (ImageView)v.findViewById(R.id.infoboardMainImage);
+        currentPeriod = (LinearLayout)v.findViewById(R.id.currentPeriod);
 
         // Set onClickListeners to this class's onClick function
         infoboardButton.setOnClickListener(this);
@@ -94,15 +84,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         InfoBoard infoBoard = mainActivity.infoboard;
 
-        try {
-
+        if (!infoBoard.getCurrentPeriod().getName().equals("")) {
+            currentPeriod.setVisibility(View.VISIBLE);
+            infoboardMessage.setTextSize(14);
             currentPeriodName.setText(infoBoard.getCurrentPeriod().getName());
             currentPeriodTime.setText(infoBoard.getCurrentPeriod().getStart() + " - " + infoBoard.getCurrentPeriod().getEnd());
-            infoboardMessage.setText(infoBoard.getMessage2());
-            infoboardMainImage.setImageDrawable(infoBoard.getImage1());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            currentPeriod.setVisibility(View.GONE);
+            infoboardMessage.setTextSize(17);
         }
+        infoboardMessage.setText(infoBoard.getMessage2());
+        infoboardMainImage.setImageDrawable(infoBoard.getImage1());
+
 
 
         // Return the inflated layout
