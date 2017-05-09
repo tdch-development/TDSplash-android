@@ -65,10 +65,12 @@ public class NewsFragment extends Fragment {
         //parses document for all titles/descriptions
         //stores them to an ArrayList of Elements, declared using JSoup built in formatting
         //contains them like <title>blah<\blah>
+        int posts = doc.select("item").size();
         Elements titlesHTML = doc.select("title");
         Elements datesHTML = doc.select("pubDate");
         Elements descriptionsHTML = doc.select("description");
-        int posts = Integer.parseInt(doc.select("openSearch:totalResults").text()); // get the number of posts
+
+        newsTitleTest.setText(Integer.toString(posts));
 
         NewsPost[] newsPosts = new NewsPost[posts]; // create an array that holds all the news posts
 
