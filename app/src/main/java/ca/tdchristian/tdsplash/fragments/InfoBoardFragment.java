@@ -2,6 +2,8 @@ package ca.tdchristian.tdsplash.fragments;
 
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import ca.tdchristian.tdsplash.tasks.RetrieveInfoBoard;
 
 public class InfoBoardFragment extends Fragment implements View.OnClickListener {
 
+    //Variable declaration
     private TextView period1Name;
     private TextView period1Time;
     private TextView period2Name;
@@ -36,7 +39,6 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
     private TextView period6Time;
     private TextView period7Name;
     private TextView period7Time;
-
     private LinearLayout period1;
     private LinearLayout period2;
     private LinearLayout period3;
@@ -44,14 +46,10 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
     private LinearLayout period5;
     private LinearLayout period6;
     private LinearLayout period7;
-
     private TextView message1;
     private TextView message2;
-
     private ImageView image1;
     private ImageView image2;
-
-
 
 
     public InfoBoardFragment() {
@@ -66,7 +64,7 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
         super.onCreate(savedInstanceState);
     }
 
-
+    // This view will be the inflated infoboard fragment layout
     public View v;
 
     @Override
@@ -75,6 +73,7 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
 
         v = inflater.inflate(R.layout.fragment_info_board, container, false);
 
+        // Variable initialization
         period1Name = (TextView) v.findViewById(R.id.period1Name);
         period1Time = (TextView) v.findViewById(R.id.period1Time);
         period2Name = (TextView) v.findViewById(R.id.period2Name);
@@ -101,25 +100,13 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
         image1 = (ImageView) v.findViewById(R.id.imageView1);
         image2 = (ImageView) v.findViewById(R.id.imageView2);
 
+        // Refresh layout with the schedule
         refreshSchedule();
 
         return v;
     }
 
-    public void promptRefresh() {
-        int g = View.GONE;
-        period1.setVisibility(g);
-        period2.setVisibility(g);
-        period3.setVisibility(g);
-        period4.setVisibility(g);
-        period5.setVisibility(g);
-        period6.setVisibility(g);
-        period7.setVisibility(g);
-        message1.setVisibility(g);
-        image2.setVisibility(g);
-        message2.setText(R.string.internet_connection_prompt);
-    }
-
+    // This method will make sure all views are visible
     public void makeAllViewsVisible() {
 
         int v = View.VISIBLE;
@@ -139,52 +126,96 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
     public void refreshSchedule() {
 
         makeAllViewsVisible();
-        InfoBoard infoboard;
+        InfoBoard infoboard; // Create the infoboard object
         try {
 
+            // Initialize the local infoboard with the infoboard created in the main activity
             MainActivity mainActivity = (MainActivity) getActivity();
-            mainActivity.retrieveInfoBoard();
             infoboard = mainActivity.infoboard;
+
+            // Get the amount of periods and set the layout to only include that amount of periods
             int periods = infoboard.getSchedule().size();
             setPeriodVisibility(periods);
 
-            int i = 0;
+            int p = 0; // Just a counter
 
-            if (i < periods) {
+            // Set the periods to display the infomation only for the amount of periods there currently is
+            if (p < periods) {
                 period1Name.setText(infoboard.getSchedule().get(0).getName());
                 period1Time.setText(infoboard.getSchedule().get(0).getStart() + " - " + infoboard.getSchedule().get(0).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period2Name.setText(infoboard.getSchedule().get(1).getName());
                 period2Time.setText(infoboard.getSchedule().get(1).getStart() + " - " + infoboard.getSchedule().get(1).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period3Name.setText(infoboard.getSchedule().get(2).getName());
                 period3Time.setText(infoboard.getSchedule().get(2).getStart() + " - " + infoboard.getSchedule().get(2).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period4Name.setText(infoboard.getSchedule().get(3).getName());
                 period4Time.setText(infoboard.getSchedule().get(3).getStart() + " - " + infoboard.getSchedule().get(3).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period5Name.setText(infoboard.getSchedule().get(4).getName());
                 period5Time.setText(infoboard.getSchedule().get(4).getStart() + " - " + infoboard.getSchedule().get(4).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period6Name.setText(infoboard.getSchedule().get(5).getName());
                 period6Time.setText(infoboard.getSchedule().get(5).getStart() + " - " + infoboard.getSchedule().get(5).getEnd());
-                i++;
+                p++;
             }
-            if (i < periods) {
+            if (p < periods) {
                 period7Name.setText(infoboard.getSchedule().get(6).getName());
                 period7Time.setText(infoboard.getSchedule().get(6).getStart() + " - " + infoboard.getSchedule().get(6).getEnd());
             }
 
+            if (!infoboard.getCurrentPeriod().getName().equals("")) {
+                for (int i = 0; i<infoboard.getSchedule().size();i++) {
+                    if (mainActivity.infoboard.getSchedule().get(i).getName().equals(infoboard.getCurrentPeriod().getName())) {
+
+                        LinearLayout currentPeriod = null;
+
+                        switch (i) {
+                            case 0:
+                                currentPeriod = period1;
+                                break;
+                            case 1:
+                                currentPeriod = period2;
+                                break;
+                            case 2:
+                                currentPeriod = period3;
+                                break;
+                            case 3:
+                                currentPeriod = period4;
+                                break;
+                            case 4:
+                                currentPeriod = period5;
+                                break;
+                            case 5:
+                                currentPeriod = period6;
+                                break;
+                            case 6:
+                                currentPeriod = period7;
+                                break;
+                        }
+
+                        try {
+                            currentPeriod.setBackgroundResource(R.drawable.schedule_background);
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+
+            //Set0 the messages and images
             message1.setText(infoboard.getMessage1());
             message2.setText(infoboard.getMessage2());
             image1.setImageDrawable(infoboard.getImage1());
@@ -196,6 +227,7 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
 
     }
 
+    // A method that will make the amount of periods, int p, visible
     public void setPeriodVisibility(int p) {
         switch (p) {
             case 0:
@@ -285,18 +317,11 @@ public class InfoBoardFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
+        // If the bottom message is clicked, refresh the schedule
         if (view == message2) {
-
-            ConnectivityManager cm =
-                    (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-            if (activeNetwork != null &&
-                    activeNetwork.isConnectedOrConnecting()) {
-                refreshSchedule();
-            }
+            refreshSchedule();
         }
+
     }
 
 }
