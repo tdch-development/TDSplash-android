@@ -9,16 +9,35 @@
 
     <TextView
         android:id="@+id/newsTitleTest"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:gravity="bottom"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="TextView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/newsDateTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="TextView"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/newsBodyTest"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         android:text="Hello blank news fragment" />
 
 </LinearLayout>
