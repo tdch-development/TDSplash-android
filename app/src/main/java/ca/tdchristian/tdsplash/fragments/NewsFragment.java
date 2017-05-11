@@ -15,6 +15,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -28,6 +29,7 @@ public class NewsFragment extends Fragment {
     Document doc;
     TextView newsTitleTest;
     TextView newsBodyText;
+    TextView newsDateTest;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -51,6 +53,7 @@ public class NewsFragment extends Fragment {
 
         newsTitleTest = (TextView)v.findViewById(R.id.newsTitleTest);
         newsBodyText = (TextView)v.findViewById(R.id.newsBodyTest);
+        newsDateTest = (TextView)v.findViewById(R.id.newsDateTest);
 
         // Create an instance of RetrieveNewsFeed
         RetrieveNewsFeed retrieveNewsFeed = new RetrieveNewsFeed();
@@ -70,7 +73,9 @@ public class NewsFragment extends Fragment {
         Elements datesHTML = doc.select("pubDate");
         Elements descriptionsHTML = doc.select("description");
 
-        newsTitleTest.setText(Integer.toString(posts));
+        //newsTitleTest.setText(Integer.toString(posts));
+
+
 
         NewsPost[] newsPosts = new NewsPost[posts]; // create an array that holds all the news posts
 
@@ -78,6 +83,11 @@ public class NewsFragment extends Fragment {
         for(int i = 0; i < posts; i++) {
             newsPosts[i] = new NewsPost(titlesHTML.get(i+1).text(), datesHTML.get(i).text(), descriptionsHTML.get(i+1).text());
         }
+
+        newsTitleTest.setText(newsPosts[0].getTitle());
+        newsDateTest.setText(newsPosts[0].getDate().substring(0, newsPosts[0].getDate().length()-9)); //get rid of seconds and time zone
+        newsBodyText.setText(newsPosts[0].getBody());
+
 
         // Return the inflated view
         return v;
