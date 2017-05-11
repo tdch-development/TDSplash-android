@@ -84,8 +84,16 @@ public class NewsFragment extends Fragment {
             newsPosts[i] = new NewsPost(titlesHTML.get(i+1).text(), datesHTML.get(i).text(), descriptionsHTML.get(i+1).text());
         }
 
+        String[] dateFormatted = new int[posts];
+        for(int i = 0; i < posts; i++){
+            String temp = newsPosts[i].getDate().substring(0, newsPosts[i].getDate().length()-9); // remove secs, time zone
+            String time = temp.substring(temp.length()-5, temp.length());
+            int hour = Integer.parseInt(time.substring(0,2)) % 12; //get hours, mod 12
+            dateFormatted[i] = temp.substring(0,temp.length() - 5) + hour + time.substring(2);
+        }
+
         newsTitleTest.setText(newsPosts[0].getTitle());
-        newsDateTest.setText(newsPosts[0].getDate().substring(0, newsPosts[0].getDate().length()-9)); //get rid of seconds and time zone
+        newsDateTest.setText(dateFormatted[0]); //get rid of seconds and time zone
         newsBodyText.setText(newsPosts[0].getBody());
 
 
