@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context="ca.tdchristian.tdsplash.fragments.NewsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,8 +12,8 @@
         android:id="@+id/newsTitleTest"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="bottom"
+        android:layout_weight="2"
+        android:gravity="bottom|center_vertical"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="TextView"
@@ -23,7 +24,9 @@
     <TextView
         android:id="@+id/newsDateTest"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:text="TextView"
         android:textAllCaps="true"
@@ -35,9 +38,10 @@
         android:id="@+id/newsBodyTest"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="20"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:text="Hello blank news fragment" />
+        android:text="Hello blank news fragment"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

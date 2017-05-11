@@ -17,7 +17,8 @@
             android:layout_height="0dp"
             android:layout_weight="2.5"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="16dp"
+            android:weightSum="7.5">
 
             <ImageView
                 android:id="@+id/infoboardMainImage"
@@ -82,14 +83,14 @@
                         android:text="@string/blank_infoboard_message"
                         android:textAllCaps="true"
                         android:textColor="#FFF"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <ImageButton
                         android:id="@+id/infoboardButton"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignBottom="@+id/infoboardMessage"
-                        android:layout_alignRight="@+id/infoboardMessage"
+                        android:layout_alignEnd="@+id/infoboardMessage"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:src="@drawable/fullscreen"
@@ -116,7 +117,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
@@ -152,6 +153,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
+                    android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/bustracker" />
 
@@ -184,6 +186,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
+                    android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/splash" />
 
@@ -196,6 +199,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
+                    android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/parents" />
             </LinearLayout>

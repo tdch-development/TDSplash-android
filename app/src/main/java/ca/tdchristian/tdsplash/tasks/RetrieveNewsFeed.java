@@ -14,7 +14,7 @@ public class RetrieveNewsFeed extends AsyncTask<Void, Void, Document> {
     protected Document doInBackground(Void... Void){
         try {
             //Get HTML document from URL
-            return Jsoup.connect("http://tdnewstest.blogspot.com/feeds/posts/default?alt=rss").get();
+            return Jsoup.connect("http://tdsplashnews.blogspot.com/feeds/posts/default?alt=rss").get();
         } catch (IOException e) {
             e.printStackTrace();
         }

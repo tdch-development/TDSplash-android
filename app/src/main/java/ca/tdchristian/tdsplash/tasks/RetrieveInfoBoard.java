@@ -1,8 +1,11 @@
 package ca.tdchristian.tdsplash.tasks;
 
+import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,25 +15,26 @@ import org.jsoup.select.Elements;
 import java.io.InputStream;
 import java.net.URL;
 
+import ca.tdchristian.tdsplash.R;
+import ca.tdchristian.tdsplash.activities.MainActivity;
 import ca.tdchristian.tdsplash.objects.InfoBoard;
 import ca.tdchristian.tdsplash.objects.Period;
 import ca.tdchristian.tdsplash.objects.Schedule;
 
-public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
+public class RetrieveInfoBoard extends AsyncTask<ProgressBar, Void, InfoBoard> {
 
-    int progress_status;
-
+    ProgressBar spinner;
     @Override
     protected void onPreExecute() {
         // TODO Auto-generated method stub
         super.onPreExecute();
-        //Toast.makeText(Main.get
-        //Main.getApp().txt_percentage.setText("downloading 0%");App(),"Invoke on PreExecute()", Toast.LENGTH_SHORT).show();
-        progress_status = 0 ;
+
     }
 
     @Override
-    protected InfoBoard doInBackground(Void... strings) {
+    protected InfoBoard doInBackground(ProgressBar... spinners) {
+
+        spinner = spinners[0];
 
         Schedule schedule = getSchedule();
         String message1 = getMessage1();
@@ -44,7 +48,9 @@ public class RetrieveInfoBoard extends AsyncTask<Void, Void, InfoBoard> {
 
     @Override
     protected void onPostExecute(InfoBoard infoboard) {
+
         super.onPostExecute(infoboard);
+        //spinner.setVisibility(View.GONE);
     }
 
     private Schedule getSchedule() {
