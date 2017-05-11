@@ -142,8 +142,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/splashButton"
+                <ImageButton
+                    android:id="@+id/busButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="4dp"
@@ -152,7 +152,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
-                    android:text="Splash!" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bustracker" />
 
                 <ImageButton
                     android:id="@+id/edsbyButton"
@@ -174,8 +175,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/busButton"
+                <ImageButton
+                    android:id="@+id/splashButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="6dp"
@@ -183,9 +184,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
-                    android:text="Bus Tracker" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/splash" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/parentsButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -194,7 +196,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_corners"
                     android:backgroundTint="#2E7D32"
-                    android:text="For Parents" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/parents" />
             </LinearLayout>
         </LinearLayout>
 
